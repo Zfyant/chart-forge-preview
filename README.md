@@ -4,12 +4,17 @@
 
   <h1>⚒️ ChartForge</h1>
 
-  <p><a href="index.html"><strong>Open the formatted HTML preview</strong></a> (looks better than this markdown page).</p>
-
   <p>
     <strong>Patient-controlled health records with built-in AI</strong><br />
     A modern, privacy-first platform for organizing medical history, generating insights, and planning next steps.
   </p>
+
+  <p>
+    <a href="https://zfyant.github.io/chart-forge-preview">
+      <img src="https://img.shields.io/badge/%E2%9C%A8_Open_the_Live_Preview-Screenshots_%26_Tour-c6a15a?style=for-the-badge&labelColor=1a1714" alt="Open the Live Preview" />
+    </a>
+  </p>
+  <p><em>Skip the markdown wall · jump straight to the polished HTML showcase</em></p>
 
   <p>
     <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
