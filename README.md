@@ -10,7 +10,7 @@
   </p>
 
   <p>
-    <a href="index.html#screenshots">
+    <a href="(https://zfyant.github.io/chart-forge-preview)">
       <img src=".assets/open-live-preview.png" alt="Open the Live Preview · Screenshots and Tour" width="420" />
     </a>
   </p>
