@@ -29,7 +29,7 @@
 
 ---
 
-## 🚀 Elevator Pitch
+## 🚀 What This Is
 
 ChartForge turns a personal medical chart into a living, intelligent system. It helps patients and advocates collect structured records, summarize complex histories, visualize trends, and prepare better questions for clinicians.
 
