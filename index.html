@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChartForge</title>
+  <meta name="description" content="Patient-controlled health records with built-in AI. Public preview of ChartForge." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,680&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #12100e;
+      --paper: #1a1714;
+      --line: #3d3429;
+      --gold: #c6a15a;
+      --gold-dim: #8d7340;
+      --text: #f4efe6;
+      --muted: #c3b6a4;
+      --display: "Fraunces", "Palatino Linotype", Palatino, serif;
+      --body: "Source Sans 3", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    a { color: var(--gold); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: #e6c98a; }
+
+    .wrap {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 56px 0 12px;
+      text-align: center;
+    }
+
+    header img.logo { width: 148px; height: auto; }
+
+    h1 {
+      margin: 10px 0 8px;
+      font-family: var(--display);
+      font-size: clamp(42px, 6vw, 64px);
+      font-weight: 680;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .tagline {
+      margin: 0 auto 18px;
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .tagline strong { color: var(--text); font-weight: 700; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .chips a {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--text);
+      background: var(--paper);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .chips a:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+    .notes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .hero {
+      margin: 28px 0 8px;
+    }
+
+    figure { margin: 0; }
+
+    figure img,
+    .shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    figcaption,
+    .shot figcaption {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 15px;
+      text-align: center;
+    }
+
+    figcaption b,
+    .shot figcaption b { color: var(--text); }
+
+    section { padding: 28px 0 8px; }
+
+    h2 {
+      margin: 0 0 12px;
+      font-family: var(--display);
+      font-size: 30px;
+      font-weight: 560;
+      letter-spacing: -0.01em;
+    }
+
+    .rule {
+      height: 1px;
+      margin: 28px 0 0;
+      background: var(--line);
+      border: 0;
+    }
+
+    ul.plain {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    ul.plain li {
+      display: grid;
+      grid-template-columns: 1.6em 1fr;
+      gap: 8px;
+      margin: 0 0 8px;
+    }
+
+    .shots {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 18px;
+      margin-top: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    td:first-child { white-space: nowrap; font-weight: 700; }
+
+    .stack {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 6px 16px;
+      margin: 0;
+    }
+
+    .stack dt { font-weight: 700; }
+    .stack dd { margin: 0; color: var(--muted); }
+
+    footer {
+      padding: 8px 0 64px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      .shots,
+      .stack { grid-template-columns: 1fr; }
+      td:first-child { white-space: normal; }
+      body { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img class="logo" src=".assets/logo.png" alt="ChartForge logo" />
+      <h1>ChartForge</h1>
+      <p class="tagline">
+        <strong>Patient-controlled health records with built-in AI.</strong>
+        A privacy-first platform for organizing medical history, generating insights, and planning next steps.
+      </p>
+      <ul class="chips">
+        <li><a href="https://nextjs.org/">Next.js</a></li>
+        <li><a href="https://react.dev/">React</a></li>
+        <li><a href="https://www.typescriptlang.org/">TypeScript</a></li>
+        <li><a href="https://tailwindcss.com/">Tailwind</a></li>
+        <li><a href="https://supabase.com/">Supabase</a></li>
+      </ul>
+      <ul class="notes">
+        <li>AI proposes, a human decides</li>
+        <li>Privacy-first, patient-scoped</li>
+        <li>Public preview, sample data only</li>
+      </ul>
+    </header>
+
+    <figure class="hero">
+      <img src=".assets/dashboard.jpg" alt="ChartForge dashboard with conditions, recent activity, and trend charts" />
+      <figcaption>🏠 <b>Dashboard</b> · conditions, activity, and trend charts at a glance</figcaption>
+    </figure>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>🚀 Elevator Pitch</h2>
+      <p>ChartForge turns a personal medical chart into a living, intelligent system. It helps patients and advocates collect structured records, summarize complex histories, visualize trends, and prepare better questions for clinicians.</p>
+      <p>The core rule is simple: <strong>🤖 AI can propose, but 👤 humans decide.</strong> The assistant can draft a chart update, explain a term, or summarize a thread, but edits go through review before they become part of the record.</p>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>❓ Why This Project Exists</h2>
+      <p>Traditional patient records are scattered across portals, PDFs, visit notes, screenshots, and memory. ChartForge gives those fragments a usable home:</p>
+      <ul class="plain">
+        <li><span>🗂️</span><span>Ownership and control of the health record</span></li>
+        <li><span>📚</span><span>Rich, structured documentation that stays readable</span></li>
+        <li><span>🤖</span><span>A chart-aware AI assistant for summaries, explanations, and draft updates</span></li>
+        <li><span>📈</span><span>Visual trends for vitals, symptoms, and progress over time</span></li>
+        <li><span>🛡️</span><span>Review gates so automation cannot silently rewrite the chart</span></li>
+      </ul>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>🎯 Who It's For</h2>
+      <ul class="plain">
+        <li><span>🧍</span><span>Patients and advocates managing complex, multi-year health journeys</span></li>
+        <li><span>🩺</span><span>Care teams that need cleaner summaries before visits</span></li>
+        <li><span>🛠️</span><span>Builders interested in privacy-aware AI, clinical UX, and patient-owned records</span></li>
+        <li><span>💼</span><span>Employers looking for full-stack product execution with real-world safety constraints</span></li>
+      </ul>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>✨ Highlights</h2>
+      <ul class="plain">
+        <li><span>👑</span><span><strong>Patient-Controlled Chart:</strong> The patient owns the record. AI helps read, summarize, and draft, but approved users decide what changes.</span></li>
+        <li><span>🧱</span><span><strong>Documents as Building Blocks:</strong> Profile, condition, management, and reference pages render through clinical layouts instead of raw markdown.</span></li>
+        <li><span>🤖</span><span><strong>Chart-Aware AI Assistant:</strong> Chat can answer from the chart, keep context across a long thread, and send useful output to review.</span></li>
+        <li><span>✅</span><span><strong>Review Before Write:</strong> Proposed chart edits are queued, diffed, and applied only after a human approves them.</span></li>
+        <li><span>🔎</span><span><strong>Insights Queue:</strong> Separate scans flag stale items, conflicts, and gaps for approve, archive, or promote-to-chart workflows.</span></li>
+        <li><span>💊</span><span><strong>Medication + PGx Views:</strong> Medication, supplement, and pharmacogenomics pages use purpose-built layouts for faster review.</span></li>
+        <li><span>📊</span><span><strong>Trends and Correlations:</strong> Vitals and symptom metrics can render as focused charts.</span></li>
+        <li><span>🔒</span><span><strong>Privacy-First Design:</strong> Patient scope, role checks, row-level security, and tokenized AI calls are built into the architecture.</span></li>
+      </ul>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>📸 Screenshots</h2>
+      <p>A closer look at the product surfaces.</p>
+      <div class="shots">
+        <figure class="shot">
+          <img src=".assets/dashboard.jpg" alt="ChartForge dashboard with chart metrics and trend cards" />
+          <figcaption>🏠 <b>Dashboard</b> · metrics, activity, and trends</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src=".assets/medications.jpg" alt="Medications and supplements overview" />
+          <figcaption>💊 <b>Medications</b> · diary, supplements, pillar tags</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src=".assets/ai-chat.jpg" alt="AI health assistant conversation" />
+          <figcaption>🤖 <b>AI Chat</b> · chart-aware answers with review actions</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src=".assets/quick-explain.jpg" alt="Quick explain popup over a medication page" />
+          <figcaption>💡 <b>Quick Explain</b> · plain-language term popups</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>🔑 Core Features</h2>
+      <table>
+        <thead>
+          <tr><th>Feature</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>🏠 Patient Dashboard</td><td>Active conditions, record counts, recent activity, and trend cards for the linked patient.</td></tr>
+          <tr><td>📄 Clinical Documents</td><td>Profile, condition, management, and reference pages rendered with layout-aware components.</td></tr>
+          <tr><td>🤖 AI Chat</td><td>Full-page and sidebar chat grounded in the patient chart, with concise or detailed response modes.</td></tr>
+          <tr><td>✅ Review Queue</td><td>AI-proposed edits are listed, reviewed, and applied only on approval.</td></tr>
+          <tr><td>🔎 Insights</td><td>Background scans surface gaps, conflicts, stale data, and follow-up opportunities.</td></tr>
+          <tr><td>💊 Medications + PGx</td><td>Medication, supplement, and pharmacogenomics views built for quick clinical scanning.</td></tr>
+          <tr><td>📊 Charts</td><td>Vitals, symptoms, and relationship charts through reusable visualization components.</td></tr>
+          <tr><td>🛠️ Admin Tools</td><td>Invites, user roles, patient linking, sync checks, restore points, and feedback moderation.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>🛠️ Tech Stack</h2>
+      <dl class="stack">
+        <dt>⚛️ Frontend</dt><dd>Next.js 16 App Router, React 19, TypeScript</dd>
+        <dt>🎨 Styling</dt><dd>Tailwind CSS 4, project design tokens, reusable clinical layouts</dd>
+        <dt>🗄️ Data + Auth</dt><dd>Supabase, PostgreSQL, Google OAuth, row-level security</dd>
+        <dt>🧠 AI</dt><dd>Vercel AI SDK, OpenRouter models, optional web research</dd>
+        <dt>📝 Content</dt><dd>Markdown documents, frontmatter, Mermaid diagrams</dd>
+        <dt>📦 State + Validation</dt><dd>Zustand, Zod</dd>
+        <dt>📉 Charts</dt><dd>Recharts</dd>
+        <dt>🧪 Testing</dt><dd>Vitest</dd>
+      </dl>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>🏗️ Architecture at a Glance</h2>
+      <ul class="plain">
+        <li><span>🔐</span><span><strong>Patient-scoped runtime:</strong> Authenticated users see only the chart they are linked to, unless an admin role allows wider operation.</span></li>
+        <li><span>📚</span><span><strong>Document-first model:</strong> The chart stays readable as structured documents while the app renders richer layouts on top.</span></li>
+        <li><span>🎯</span><span><strong>Direct chart grounding:</strong> Chat loads prioritized chart context directly instead of depending on a patient-chart vector database.</span></li>
+        <li><span>🧑‍⚖️</span><span><strong>Human review loop:</strong> Chart-writing actions flow through review so AI output stays inspectable.</span></li>
+        <li><span>🛡️</span><span><strong>Operational safety:</strong> Admin sync, restore, feedback, and role tooling are first-class surfaces.</span></li>
+      </ul>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>🚦 Current Status</h2>
+      <p>ChartForge is actively developed. The current focus is hardening review flows, improving reference-grounded answers, expanding medication and pharmacogenomics views, and keeping the interface fast enough for everyday chart work.</p>
+    </section>
+
+    <hr class="rule" />
+
+    <section>
+      <h2>💼 Differentiators</h2>
+      <ul class="plain">
+        <li><span>❤️</span><span><strong>Patient-first product thinking:</strong> Built around how patients and advocates actually collect, explain, and use health records.</span></li>
+        <li><span>🛡️</span><span><strong>Safety-aware AI:</strong> The assistant is helpful by design, but not allowed to silently modify the record.</span></li>
+        <li><span>🧬</span><span><strong>Real clinical density:</strong> Medication lists, timelines, PGx, metrics, and narrative notes live in one navigable system.</span></li>
+        <li><span>⚙️</span><span><strong>Modern full-stack execution:</strong> Next.js, Supabase, AI streaming, admin workflows, and testable safety gates in one product.</span></li>
+        <li><span>✨</span><span><strong>Polished UX direction:</strong> Rich visuals without losing the calm, readable feel needed for clinical content.</span></li>
+      </ul>
+    </section>
+
+    <hr class="rule" />
+
+    <footer>
+      <h2>🤝 Contact</h2>
+      <p>💬 Questions or ideas: <a href="https://github.com/Zfyant/chart-forge-preview/issues">open an issue on this repository</a>.</p>
+    </footer>
+  </div>
+</body>
+</html>

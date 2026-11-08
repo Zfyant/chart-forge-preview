@@ -4,6 +4,8 @@
 
   <h1>⚒️ ChartForge</h1>
 
+  <p><a href="index.html"><strong>Open the formatted HTML preview</strong></a> (looks better than this markdown page).</p>
+
   <p>
     <strong>Patient-controlled health records with built-in AI</strong><br />
     A modern, privacy-first platform for organizing medical history, generating insights, and planning next steps.
