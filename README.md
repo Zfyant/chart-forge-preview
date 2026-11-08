@@ -10,25 +10,14 @@
   </p>
 
   <p>
-    <a href="https://zfyant.github.io/chart-forge-preview">
-      <img src="https://img.shields.io/badge/%E2%9C%A8_Open_the_Live_Preview-Screenshots_%26_Tour-c6a15a?style=for-the-badge&labelColor=1a1714" alt="Open the Live Preview" />
+    <a href="index.html#screenshots">
+      <img src=".assets/open-live-preview.png" alt="Open the Live Preview · Screenshots and Tour" width="420" />
     </a>
   </p>
-  <p><em>Skip the markdown wall · jump straight to the polished HTML showcase</em></p>
+  <p><em>Skip the markdown wall · open the local HTML showcase</em></p>
 
-  <p>
-    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
-    <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" /></a>
-    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
-    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
-    <a href="https://supabase.com/"><img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" /></a>
-  </p>
-
-  <p>
-    <img src="https://img.shields.io/badge/AI_proposes-human_decides-7c3aed?style=flat-square" alt="AI proposes, human decides" />
-    <img src="https://img.shields.io/badge/Privacy_first-patient_scoped-0f766e?style=flat-square" alt="Privacy first" />
-    <img src="https://img.shields.io/badge/Public_preview-sample_data_only-1f2937?style=flat-square" alt="Public preview" />
-  </p>
+  <p><code>Next.js</code> · <code>React</code> · <code>TypeScript</code> · <code>Tailwind</code> · <code>Supabase</code></p>
+  <p>🤖 AI proposes · human decides &nbsp;·&nbsp; 🔒 Privacy first · patient scoped &nbsp;·&nbsp; 📦 Public preview · sample data only</p>
 </div>
 
 <br />
